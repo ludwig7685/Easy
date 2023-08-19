@@ -38,23 +38,19 @@
         const totalCounterElement = document.getElementById("totalCounter");
         const solvedCounterElement = document.getElementById("solvedCounter");
 
-        HCaptcha.resetOnSuccess(function () {
-            solvedCounter++;
-            solvedCounterElement.textContent = solvedCounter;
-            hCaptchaRender();
-        });
-
-        function hCaptchaRender() {
+        function reloadPage() {
             totalCounter++;
+            solvedCounter++;
             totalCounterElement.textContent = totalCounter;
-            hCaptcha.reset(); // Reset the hCaptcha widget
-            hCaptcha.render('.h-captcha', {
-                sitekey: '962bb21f-1e75-42d1-a1d7-967845f7c0e1',
-                theme: 'black'
-            });
+            solvedCounterElement.textContent = solvedCounter;
+            location.reload(); // Reload the entire page
         }
 
-        hCaptchaRender();
+        hCaptcha.render('.h-captcha', {
+            sitekey: '962bb21f-1e75-42d1-a1d7-967845f7c0e1',
+            theme: 'black',
+            callback: reloadPage // Reload the page on success
+        });
     </script>
 </body>
 </html>
