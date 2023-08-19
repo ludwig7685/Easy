@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>hCaptcha Demo</title>
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
+    <style>
+        body {
+            background-color: darkgreen;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .counter {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="counter">
+            <div>hCaptchas total: <span id="totalCounter">0</span></div>
+            <div>hCaptchas solved: <span id="solvedCounter">0</span></div>
+        </div>
+        <div class="h-captcha" data-sitekey="962bb21f-1e75-42d1-a1d7-967845f7c0e1"></div>
+    </div>
+    <script>
+        let totalCounter = 0;
+        let solvedCounter = 0;
+
+        const totalCounterElement = document.getElementById("totalCounter");
+        const solvedCounterElement = document.getElementById("solvedCounter");
+
+        HCaptcha.resetOnSuccess(function () {
+            solvedCounter++;
+            solvedCounterElement.textContent = solvedCounter;
+            hCaptchaRender();
+        });
+
+        function hCaptchaRender() {
+            totalCounter++;
+            totalCounterElement.textContent = totalCounter;
+            hCaptcha.render('.h-captcha', {
+                sitekey: '962bb21f-1e75-42d1-a1d7-967845f7c0e1',
+                theme: 'dark'
+            });
+        }
+
+        hCaptchaRender();
+    </script>
+</body>
+</html>
