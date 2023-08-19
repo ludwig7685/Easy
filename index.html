@@ -5,7 +5,7 @@
     <script src="https://hcaptcha.com/1/api.js" async defer></script>
     <style>
         body {
-            background-color: darkgrey;
+            background-color: black;
             color: white;
             font-family: Arial, sans-serif;
         }
@@ -49,11 +49,15 @@
             totalCounterElement.textContent = totalCounter;
             hCaptcha.render('.h-captcha', {
                 sitekey: '962bb21f-1e75-42d1-a1d7-967845f7c0e1',
-                theme: 'dark'
+                theme: 'black'
             });
         }
 
         hCaptchaRender();
+
+        function reloadAfterSuccess() {
+            location.reload();
+        }
     </script>
 </body>
 </html>
