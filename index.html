@@ -47,6 +47,7 @@
         function hCaptchaRender() {
             totalCounter++;
             totalCounterElement.textContent = totalCounter;
+            hCaptcha.reset(); // Reset the hCaptcha widget
             hCaptcha.render('.h-captcha', {
                 sitekey: '962bb21f-1e75-42d1-a1d7-967845f7c0e1',
                 theme: 'black'
@@ -54,10 +55,6 @@
         }
 
         hCaptchaRender();
-
-        function reloadAfterSuccess() {
-            location.reload();
-        }
     </script>
 </body>
 </html>
